@@ -16,18 +16,19 @@ public class Job {
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
-    public void Job(){
+    public Job(){
         this.id = this.nextId;
         this.nextId++;
 
     }
-    public void Job(String name,Employer employer,Location location,PositionType positionType,CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-        Job();
+
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -97,5 +98,18 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        return "\n" +
+               "ID: " + id + "\n" +
+                "Name: " + (name == null ?  "Data not available" : name ) + "\n" +
+                "Employer: " + ((employer.getValue() == null || employer.getValue().equals("") ) ? "Data not available" : employer.getValue()   ) + "\n" +
+                "Location: " + ((location.getValue() == null || location.getValue().equals("")) ? "Data not available" :location.getValue() ) + "\n" +
+                "Position Type: " + ((positionType.getValue() == null || positionType.getValue().equals("")) ? "Data not available" : positionType.getValue() ) + "\n" +
+               "Core Competency: " + ((coreCompetency.getValue() == null || coreCompetency.getValue().equals("")) ? "Data not available" : coreCompetency.getValue() ) +
+                "\n";
+
     }
 }
